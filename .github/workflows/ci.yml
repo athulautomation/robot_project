@@ -1,7 +1,7 @@
 name: Robot Framework CI (manual)
 
 on:
-  workflow_dispatch:   # Manual trigger only
+  workflow_dispatch:
     inputs:
       suite:
         description: 'Which tests to run (path or folder)'

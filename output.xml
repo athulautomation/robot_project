@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generator="Robot 7.3.2 (Python 3.13.5 on win32)" generated="2025-09-14T17:08:23.606437" rpa="false" schemaversion="5">
+<suite id="s1" name="Tests" source="C:\code\robot_project\tests">
+<suite id="s1-s1" name="Sample Test" source="C:\code\robot_project\tests\sample_test.robot">
+<test id="s1-s1-t1" name="Open Google Homepage" line="7">
+<kw name="Open Browser To Homepage" owner="keywords">
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-14T17:08:24.382333" level="INFO">${options} = &lt;selenium.webdriver.chrome.options.Options object at 0x000002CC9B12CAD0&gt;</msg>
+<var>${options}</var>
+<arg>sys.modules['selenium.webdriver'].ChromeOptions()</arg>
+<arg>sys</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-14T17:08:24.380337" elapsed="0.003643"/>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${HEADLESS}'=='true'</arg>
+<arg>Call Method</arg>
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--headless</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="PASS" start="2025-09-14T17:08:24.385811" elapsed="0.001216"/>
+</kw>
+<kw name="Evaluate" owner="BuiltIn">
+<msg time="2025-09-14T17:08:24.388786" level="INFO">${tmp_dir} = /tmp/robot_user_1757849904388</msg>
+<var>${tmp_dir}</var>
+<arg>f"/tmp/robot_user_{int(time.time()*1000)}"</arg>
+<arg>time</arg>
+<doc>Evaluates the given expression in Python and returns the result.</doc>
+<status status="PASS" start="2025-09-14T17:08:24.387728" elapsed="0.001260"/>
+</kw>
+<kw name="Call Method" owner="BuiltIn">
+<msg time="2025-09-14T17:08:24.390708" level="FAIL">Calling method 'add_argument' failed: TypeError: ArgOptions.add_argument() got an unexpected keyword argument '--user-data-dir'</msg>
+<arg>${options}</arg>
+<arg>add_argument</arg>
+<arg>--user-data-dir=${tmp_dir}</arg>
+<doc>Calls the named method of the given object with the provided arguments.</doc>
+<status status="FAIL" start="2025-09-14T17:08:24.389552" elapsed="0.001911">Calling method 'add_argument' failed: TypeError: ArgOptions.add_argument() got an unexpected keyword argument '--user-data-dir'</status>
+</kw>
+<kw name="Run Keyword If" owner="BuiltIn">
+<arg>'${SELENIUM_GRID_URL}' != ''</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>remote_url=${SELENIUM_GRID_URL}</arg>
+<arg>options=${options}</arg>
+<arg>ELSE</arg>
+<arg>Open Browser</arg>
+<arg>${url}</arg>
+<arg>${BROWSER}</arg>
+<arg>options=${options}</arg>
+<doc>Runs the given keyword with the given arguments, if ``condition`` is true.</doc>
+<status status="NOT RUN" start="2025-09-14T17:08:24.392191" elapsed="0.000155"/>
+</kw>
+<kw name="Maximize Browser Window" owner="SeleniumLibrary">
+<doc>Maximizes current browser window.</doc>
+<status status="NOT RUN" start="2025-09-14T17:08:24.393049" elapsed="0.000132"/>
+</kw>
+<status status="FAIL" start="2025-09-14T17:08:24.376546" elapsed="0.017153">Calling method 'add_argument' failed: TypeError: ArgOptions.add_argument() got an unexpected keyword argument '--user-data-dir'</status>
+</kw>
+<kw name="Title Should Be" owner="SeleniumLibrary">
+<arg>${EXPECTED_TITLE}</arg>
+<doc>Verifies that the current page title equals ``title``.</doc>
+<status status="NOT RUN" start="2025-09-14T17:08:24.394435" elapsed="0.000172"/>
+</kw>
+<kw name="Close Browser" owner="SeleniumLibrary">
+<doc>Closes the current browser.</doc>
+<status status="NOT RUN" start="2025-09-14T17:08:24.395163" elapsed="0.000088"/>
+</kw>
+<doc>Opens the Google homepage and checks the title</doc>
+<status status="FAIL" start="2025-09-14T17:08:24.372762" elapsed="0.023228">Calling method 'add_argument' failed: TypeError: ArgOptions.add_argument() got an unexpected keyword argument '--user-data-dir'</status>
+</test>
+<status status="FAIL" start="2025-09-14T17:08:23.684156" elapsed="0.719675"/>
+</suite>
+<status status="FAIL" start="2025-09-14T17:08:23.610225" elapsed="0.798630"/>
+</suite>
+<statistics>
+<total>
+<stat pass="0" fail="1" skip="0">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat name="Tests" id="s1" pass="0" fail="1" skip="0">Tests</stat>
+<stat name="Sample Test" id="s1-s1" pass="0" fail="1" skip="0">Tests.Sample Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
