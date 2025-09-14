@@ -35,10 +35,10 @@ jobs:
           pip install -r requirements.txt
 
       - name: Setup Chrome
-        uses: browser-actions/setup-chrome@v2
+        uses: browser-actions/setup-chrome@v3
 
       - name: Setup ChromeDriver
-        uses: nanasess/setup-chromedriver@v2
+        uses: nanasess/setup-chromedriver@v3
         with:
           chromedriver-version: 'latest'
 
