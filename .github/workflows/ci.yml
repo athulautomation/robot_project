@@ -1,0 +1,57 @@
+name: Robot Framework CI (manual)
+
+on:
+  workflow_dispatch:   #Manual trigger only
+    inputs:
+      suite:
+        description: 'Which tests to run (path or folder)'
+        required: true
+        default: 'tests'
+      browser:
+        description: 'Browser to use'
+        required: true
+        default: 'chrome'
+      headless:
+        description: 'Run headless? true/false'
+        required: true
+        default: 'true'
+
+jobs:
+  run-robot:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Setup Chrome
+        uses: browser-actions/setup-chrome@v2
+
+      - name: Setup ChromeDriver
+        uses: nanasess/setup-chromedriver@v2
+        with:
+          chromedriver-version: 'latest'
+
+      - name: Run Robot Framework tests
+        run: |
+          echo "Running suite: ${{ github.event.inputs.suite }}"
+          robot --outputdir results \
+            -v BROWSER:${{ github.event.inputs.browser }} \
+            -v HEADLESS:${{ github.event.inputs.headless }} \
+            ${{ github.event.inputs.suite }}
+
+      - name: Upload Robot results
+        uses: actions/upload-artifact@v3
+        with:
+          name: robot-results
+          path: results/
